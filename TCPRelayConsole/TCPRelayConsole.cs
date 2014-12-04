@@ -59,7 +59,7 @@ namespace TCPRelayConsole
                 }
                 else if (arg.StartsWith("-twitch.tv") || arg.StartsWith("-ttv"))
                 {
-                    // get twitch.tv ingest server list from http://api.justin.tv/api/ingest/xsplit.xml
+                    // get twitch.tv ingest server list from https://api.twitch.tv/kraken/ingests
                     ListTwitchTvServersAndExit();
                 }
                 else if (arg.StartsWith("-p:") || arg.StartsWith("-rp:") || arg.StartsWith("-port:") || arg.StartsWith("-relay-port:"))
