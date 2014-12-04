@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7443234E-F218-4291-B58F-038ADFC95B43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TCPRelayControls</RootNamespace>
+    <AssemblyName>TCPRelayControls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectionErrorItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionErrorItem.Designer.cs">
+      <DependentUpon>ConnectionErrorItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionItem.Designer.cs">
+      <DependentUpon>ConnectionItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionAttemptItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionAttemptItem.Designer.cs">
+      <DependentUpon>ConnectionAttemptItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControlsStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DelegateUtils.cs" />
+    <Compile Include="DoubleBufferedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionsPanel.Designer.cs">
+      <DependentUpon>ConnectionsPanel.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TCPRelayCommon\TCPRelayCommon.csproj">
+      <Project>{B1A20657-6269-46F5-8796-68E1C6D9882B}</Project>
+      <Name>TCPRelayCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConnectionErrorItem.resx">
+      <DependentUpon>ConnectionErrorItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionItem.resx">
+      <DependentUpon>ConnectionItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionAttemptItem.resx">
+      <DependentUpon>ConnectionAttemptItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsStrings.pt-BR.resx" />
+    <EmbeddedResource Include="ControlsStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ControlsStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsStrings.es-AR.resx" />
+    <EmbeddedResource Include="ControlsStrings.nl-NL.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionsPanel.resx">
+      <DependentUpon>ConnectionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\XX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\faster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\fastest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\slower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\slowest.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

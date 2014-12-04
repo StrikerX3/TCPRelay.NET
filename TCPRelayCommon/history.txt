@@ -1,0 +1,128 @@
+﻿TCPRelay v0.4 alpha 2
+  by Ivan "StrikerX3" Oliveira
+
+
+Version history
+---------------
+See the readme.txt file to learn what's new in the latest version.
+
+===== Release 0.3 =====
+
+v0.3 beta 3
+-----------
+- General
+  - NEW: localization support for:
+    - [en-US] English (United States) <default>
+    - [pt-BR] Portuguese (Brazil)
+    Send me an email (ivan.rober@gmail.com) if you wish to add your language.
+    NOTE: only the GUI version has support for localization for now.
+- Console
+  - FIXED: closed connections no longer crash the console application.
+- GUI
+  - NEW: localization support, as above. By default the application will use  
+    the default language set in your operating system. You can override this by
+    passing the language code as an argument to TCPRelay.exe. The supported
+    language codes are listed between brackets above.
+  - NEW: [a3] application now has an icon (thanks Fryderyk 'Ziel' Dachowski!)
+  - NEW: [b] the last Target URI and Listen Port values are now saved to the
+    Windows Registry under the key:
+      HKEY_CURRENT_USER\Software\StrikerX3\TCPRelay
+    Now every time you restart TCPRelay the last used server and listen port
+    should be automatically set.
+  - NEW: [b2] the Target URI list is now saved to a file in the TCPRelay folder
+    (serverlist.txt) and reloaded every time TCPRelay starts.
+  - NEW: [b2] pressing Enter while typing a Target URI or starting TCPRelay
+    will add the current Target URI to the list if not already present.
+  - FIXED: [a2] localization should now work properly on all parts of the GUI.
+  - FIXED: [a3] tooltips for speed buttons were incorrectly referring to "as
+    slow as possible".
+  - FIXED: [b3] serverlist.txt is now saved to the user's AppData folder to
+    avoid permission issues. The full path under Windows Vista/7/8 is:
+	  C:\Users\<user>\AppData\Local\TCPRelay
+
+===== Release 0.2 =====
+
+v0.2.2.3 beta
+-------------
+- Console
+  - FIXED: application no longer crashes when a connection is closed.
+- GUI
+  - FIXED: outbound and inbound speeds were swapped.
+  - IMPROVED: closed connections now display the overall average speeds.
+
+
+v0.2.2.2 beta
+-------------
+- General
+  - FIXED: reduced socket buffer size. This should eliminate dropped frames and
+    disconnects caused by a change in version 0.2.1.
+
+
+v0.2.2.1 beta
+-------------
+- General
+  - FIXED: no longer tries to reverse DNS lookup the target host. Should fix
+    issues with not being able to connect to certain servers.
+
+
+v0.2.2.0 beta
+-------------
+- GUI
+  - FIXED: Target URI field no longer loses selection after being populated by
+    the Twitch.tv updater.
+  - FIXED: speeds below 1 bps no longer show as ",# bps" or "bps".
+  - IMPROVED: connection info no longer shows the local host bandwidth (the old
+    Received column). Since TCPRelay cannot receive more data than it can push
+    to the servers (due to blocking I/O), that column was completely redundant.
+    The numbers displayed in the GUI now represent the actual bandwidth usage
+    (the old Published column).
+  - IMPROVED: average speed is now an average of the last 2 seconds.
+  - IMPROVED: connection info now displays connection duration in HH:MM:SS.
+  - Speed history graph:
+    - IMPROVED: widened to fit the extra available space.
+    - IMPROVED: now displays vertical lines every second. Lighter lines
+      represent intervals of 10 seconds.
+    - IMPROVED: now displays a wide bar with the current speeds to the right of
+      the graph.
+    - IMPROVED: slightly reduced resource usage.
+
+
+v0.2.1.0 beta
+-------------
+ General
+  - FIXED: connection attempts may now timeout after 5 seconds.
+  - IMPROVED: connection errors are now handled better.
+- GUI
+  - FIXED: tab order between components is now fixed.
+  - FIXED: speed graph no longer stops working after a while.
+  - FIXED: sometimes clearing all closed connections would cause the scrollbar
+      graphics to remain on the window.
+  - IMPROVED: added tooltips to several components.
+  - IMPROVED: target URI now accepts addresses in <host>:<port> format.
+  - IMPROVED: error messages are now shown if TCPRelay fails to start.
+  - IMPROVED: connection attempts and errors are now shown in the list.
+  - IMPROVED: connection list refresh speed can be changed.
+
+
+v0.2 beta
+---------
+- Completely rewritten in C#. TCPRelay now requires .NET Framework 4 instead
+  of Java. Should help eliminate some of the issues people were having with the
+  Java Virtual Machine.
+- NEW: created a graphical user interface for easier configuration and real-time
+  connection and bandwidth usage statistics.
+- FIXED: -ttv now lists the default Twitch.tv server as well.
+
+
+===== Release 0.1 =====
+
+v0.1.1 beta
+-----------
+- NEW: You may now list all available Twitch.tv ingestion servers. Simply run:
+    TCPRelayC -ttv
+  from the command line.
+- IMPROVED: When providing a RTMP URL, TCPRelay will now display the custom RTMP
+  URL you should use in XSplit. Useful for other services such as own3d.tv.
+
+
+v0.1 beta was the first public release of TCPRelay.
