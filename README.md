@@ -52,6 +52,26 @@ Linux
 - Coming soon... hopefully! :)
 
 
+## How to build
+
+You will need Visual Studio 2010 or later. I'm not sure the Express versions will work right out of the box as the project depends on the [Newtonsoft.JSON NuGet package](https://www.nuget.org/packages/Newtonsoft.Json/).
+The project can be loaded and built on [Visual Studio 2013 Community Edition](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx).
+
+Open the solution, update the NuGet packages, select a build target (either x86 or x64) and build it. In order to build the zip files, you need to copy the following files and folders from the release folders:
+- TCPRelay/bin/Release
+    - TCPRelay.exe
+    - Newtonsoft.Json.dll
+    - TCPRelayCommon.dll
+    - TCPRelayControls.dll
+    - All language folders
+- TCPRelayCommon
+    - readme.txt
+- TCPRelayConsole
+    - TCPRelayC.exe
+
+If you wish to improve this build process, feel free to do so and submit a pull request. I would appreciate it very much.
+
+
 ## TCPRelay GUI Instructions
 
 Run TCPRelay.exe to open the GUI. The Target RTMP URL comes with the default target server and is populated with a list of all Twitch.tv servers as soon as possible. Click "Load Twitch.tv servers" if you wish to refresh the list.
