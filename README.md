@@ -26,7 +26,7 @@ I decided to improve upon the program and created a command-line tool out of it.
     - **NEW:** partial localization support for:
         - [es-AR] Spanish (Argentina)  (thanks to Nicol?s Sigal)
         - [nl-NL] Dutch (The Netherlands)  (thanks to TalbotEv)
-    Send me an email (ivan.rober@gmail.com) if you wish to add your language.
+    Send me an email if you wish to add your language.
     NOTE: only the GUI version has support for localization for now.
 - **GUI**
     - **FIXED:** status tooltip did not clear when TCPRelay was started sucessfully after an error.
@@ -57,17 +57,17 @@ Linux
 You will need Visual Studio 2010 or later. I'm not sure the Express versions will work right out of the box as the project depends on the [Newtonsoft.JSON NuGet package](https://www.nuget.org/packages/Newtonsoft.Json/).
 The project can be loaded and built on [Visual Studio 2013 Community Edition](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx).
 
-Open the solution, update the NuGet packages, select a build target (either x86 or x64) and build it. In order to build the zip files, you need to copy the following files and folders from the release folders:
+Open the solution, update the NuGet packages, select a build target (either x86 or x64) and build it. In order to build the zip files, you need to copy the following files and folders from the release folders (in bold):
 - TCPRelay/bin/Release
-    - TCPRelay.exe
-    - Newtonsoft.Json.dll
-    - TCPRelayCommon.dll
-    - TCPRelayControls.dll
-    - All language folders
+    - **TCPRelay.exe**
+    - **Newtonsoft.Json.dll**
+    - **TCPRelayCommon.dll**
+    - **TCPRelayControls.dll**
+    - **All language folders**
 - TCPRelayCommon
-    - readme.txt
+    - **readme.txt**
 - TCPRelayConsole
-    - TCPRelayC.exe
+    - **TCPRelayC.exe**
 
 If you wish to improve this build process, feel free to do so and submit a pull request. I would appreciate it very much.
 
@@ -237,7 +237,7 @@ jun-fu-wu:
 
 ## Contact
 
-- [E-mail](mailto:ivan.rober@gmail.com)
+- E-mail: see the readme.txt file.
 - [Twitter (@StrikerX3)](https://twitter.com/StrikerX3)
 - [XSplit forums](http://www.xsplit.com/forum) ([StrikerX3](https://support.xsplit.com/forum/memberlist.php?mode=viewprofile&u=51690)) ([Official topic](http://www.xsplit.com/forum/viewtopic.php?f=2&t=7159))
 - [My blog](http://strikerx3.blogspot.com/)
