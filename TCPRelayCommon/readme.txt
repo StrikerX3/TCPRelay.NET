@@ -4,26 +4,12 @@ TCPRelay v0.4 alpha 3
 
 Introduction
 ------------
-Many people have been plagued by XSplit Broadcaster's arbitrary upload bandwidth
-cap which severely limited the quality of their streams on many services, most
-commonly Justin.tv. I was one of them.
+TCPRelay's main purpose is to serve as an intermediator between streaming programs and the actual streaming servers. For some reason certain streaming programs have poor network handling code and are unable to push enough data to the RTMP servers even though users have more than enough upload speed.
 
-Even though we were reporting success with other streaming methods, such as
-FMLE, there was no response from the XSplit team regarding this problem other
-than the limitation being on our side.
+TCPRelay started out as a quick'n'dirty program just to test XSplit's upload bandwidth issues. I was surprised to see it worked.
 
-After tweaking a lot of settings on XSplit to see if I could squeeze a bit more
-bandwidth out of it, I decided to give up and try something else.
-
-Just out of curiosity I wrote a quick'n'dirty program to serve as a relay
-between XSplit Broadcaster and tested it against Justin.tv. The little program
-did nothing but transfer bytes from one side to the other. To my surprise, it
-worked on the first try. See for yourself:
 Streaming directly to Justin.tv with XSplit: http://i.imgur.com/Qlgv7.png
 Streaming to Justin.tv through the relay: http://i.imgur.com/lNh3Z.png
-
-I decided to improve upon the program and created a command-line tool out of it.
-Here it is!
 
 
 What's new in v0.4 alpha 3
@@ -38,11 +24,14 @@ What's new in v0.4 alpha 3
     - Console: use the -sbs:## parameter
 	- GUI: use the newly added Send Buffer field to adjust the buffer size
 	- The default size is 8 KB
+  - Increasing this might help reduce or eliminate dropped frames, especially
+  on connections with high latency to the server
 - GUI
   - FIXED: [a1] status tooltip did not clear when TCPRelay was started
     sucessfully after an error.
   - FIXED: [a1] added localization support for several hard-coded strings.
-  - FIXED: [a1] component layout updated manually for localization.
+  - FIXED: [a1] component layout updated manually for localization. Components
+    should no longer overlap.
   - FIXED: [a2] old Twitch.tv ingest server list was shut down. Updated to the
     new Kraken REST API. Fixes an error when starting TCPRelay.
 
