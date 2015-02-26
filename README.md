@@ -149,24 +149,6 @@ If you set the target address manually, make sure it is correct. TCPRelay will t
 
 ---
 
-**Problem:** When I run TCPRelay, a command prompt window appears and immediately closes. If I try to run it from the command line, it says that the command was not recognized.
-
-**Solution:** You do not have Java installed or it's not properly configured.
-First, download the latest JRE (Java Runtime Environment) from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jre-7u3-download-1501631.html). Don't forget to accept the license and pick the correct version for your OS.
-Follow the installer instructions. When done, open a new command prompt window and type `java -version`. Something like this should come out:
-
-    java version "1.6.0_25"
-    Java(TM) SE Runtime Environment (build 1.6.0_25-b06)
-    Java HotSpot(TM) 64-Bit Server VM (build 20.0-b11, mixed mode)
-
-If it says that the command was not recognized, you will have to add Java to the PATH variable on your system. To do so, first find the installation path of your JRE (typically C:\Program Files\Java\jre###). Copy it for later.
-
-Open the System Properties window (on Windows 7, right-click the *Computer* option in the Start menu, select *Properties*, then click *Advanced system configurations* on the left bar). Click the *Environment variables* button at the bottom of the window.
-
-Go through the second list and look for the variable named *Path*. Choose it, click *Edit* below the list and append `;<your JRE path>\bin`. Don't forget the semicolon! Now click OK on everything, open a new command prompt and test the `java -version` command again.
-
----
-
 **Problem:** I cannot type anything in the TCPRelay console window.
 
 **Solution:** The TCPRelay console window does not accept input. If you wish to pass parameters to it, you have to open a command prompt, navigate to its folder and then run TCPRelay with the desired parameters.
