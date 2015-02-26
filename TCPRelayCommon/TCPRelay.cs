@@ -40,7 +40,7 @@ namespace TCPRelayCommon
             ListenPort = 1935;
 
             ConnectTimeout = 15;
-            SocketBufferSize = 32 * 1024;
+            SocketBufferSize = 8 * 1024;
         }
 
         private void SetCultures(params Thread[] ts)
@@ -119,9 +119,7 @@ namespace TCPRelayCommon
         private TcpClient CreateTcpClient(string TargetHost, int TargetPort, int timeoutSeconds, int bufferSize)
         {
             TcpClient tcp = new TcpClient();
-            // apparently setting a large buffer causes dropped frames
-            //tcp.SendBufferSize = bufferSize;
-            //tcp.ReceiveBufferSize = bufferSize;
+            tcp.SendBufferSize = bufferSize;
             IAsyncResult ar = tcp.BeginConnect(TargetHost, TargetPort, null, null);
             WaitHandle wh = ar.AsyncWaitHandle;
             try

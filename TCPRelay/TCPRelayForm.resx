@@ -144,11 +144,8 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTargetURI.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>226, 17</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnStartStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -168,6 +165,9 @@
   <data name="btnStartStop.Text" xml:space="preserve">
     <value>Start</value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>226, 17</value>
+  </metadata>
   <data name="btnStartStop.ToolTip" xml:space="preserve">
     <value>Starts the relay</value>
   </data>
@@ -181,7 +181,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnStartStop.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="lblListenPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblListenPort.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="numListenPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 37</value>
@@ -232,7 +232,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numListenPort.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="cbxTargetURI.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -264,7 +264,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbxTargetURI.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <metadata name="initTargetURIListWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -297,7 +297,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnLoadTTVServers.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lblRunning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -333,7 +333,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblRunning.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lblVersionCopyright.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -366,11 +366,8 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblVersionCopyright.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>226, 17</value>
-  </metadata>
   <data name="tcpRelayConnectionsPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -387,12 +384,66 @@
     <value>tcpRelayConnectionsPanel1</value>
   </data>
   <data name="&gt;&gt;tcpRelayConnectionsPanel1.Type" xml:space="preserve">
-    <value>TCPRelayControls.ConnectionsPanel, TCPRelayControls, Version=0.4.0.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>TCPRelayControls.ConnectionsPanel, TCPRelayControls, Version=0.4.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tcpRelayConnectionsPanel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tcpRelayConnectionsPanel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numSendBuffer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 37</value>
+  </data>
+  <data name="numSendBuffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="numSendBuffer.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numSendBuffer.ToolTip" xml:space="preserve">
+    <value>The port TCPRelay will listen for connections</value>
+  </data>
+  <data name="&gt;&gt;numSendBuffer.Name" xml:space="preserve">
+    <value>numSendBuffer</value>
+  </data>
+  <data name="&gt;&gt;numSendBuffer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numSendBuffer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numSendBuffer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSendBuffer.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSendBuffer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSendBuffer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 39</value>
+  </data>
+  <data name="lblSendBuffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="lblSendBuffer.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="lblSendBuffer.Text" xml:space="preserve">
+    <value>Send Buffer (KB):</value>
+  </data>
+  <data name="&gt;&gt;lblSendBuffer.Name" xml:space="preserve">
+    <value>lblSendBuffer</value>
+  </data>
+  <data name="&gt;&gt;lblSendBuffer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSendBuffer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblSendBuffer.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

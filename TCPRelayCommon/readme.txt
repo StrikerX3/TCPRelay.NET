@@ -1,4 +1,4 @@
-TCPRelay v0.4 alpha 2
+TCPRelay v0.4 alpha 3
   by Ivan "StrikerX3" Oliveira
 
 
@@ -26,21 +26,25 @@ I decided to improve upon the program and created a command-line tool out of it.
 Here it is!
 
 
-What's new in v0.4 alpha 2
+What's new in v0.4 alpha 3
 --------------------------
 - General
   - NEW: partial localization support for:
-    - [es-AR] Spanish (Argentina)  (thanks to Nicol�s Sigal)
+    - [es-AR] Spanish (Argentina)  (thanks to Nicolás Sigal)
     - [nl-NL] Dutch (The Netherlands)  (thanks to TalbotEv)
     Send me an email (ivan.rober@gmail.com) if you wish to add your language.
     NOTE: only the GUI version has support for localization for now.
+  - NEW: [a3] socket send buffer size can be tweaked from the console and GUI
+    - Console: use the -sbs:## parameter
+	- GUI: use the newly added Send Buffer field to adjust the buffer size
+	- The default size is 8 KB
 - GUI
-  - FIXED: status tooltip did not clear when TCPRelay was started sucessfully
-    after an error.
-  - FIXED: added localization support for several hard-coded strings.
-  - FIXED: component layout updated manually for localization.
-  - FIXED: old Twitch.tv ingest server list was shut down. Updated to the new
-    Kraken REST API. Fixes an error when starting TCPRelay.
+  - FIXED: [a1] status tooltip did not clear when TCPRelay was started
+    sucessfully after an error.
+  - FIXED: [a1] added localization support for several hard-coded strings.
+  - FIXED: [a1] component layout updated manually for localization.
+  - FIXED: [a2] old Twitch.tv ingest server list was shut down. Updated to the
+    new Kraken REST API. Fixes an error when starting TCPRelay.
 
 See the history.txt file for earlier versions.
 
@@ -192,6 +196,20 @@ Solution: Don't worry too much about these yellow results unless you are getting
     (don't ask why)."
 
 
+Solution: Don't worry too much about these yellow results unless you are getting
+  dropped frames. The XSplit Bandwidth Tester will show the amount of dropped
+  frames at the end of the test. If it stays low (ideally zero) you're fine and
+  TCPRelay is working as intended. See the XSplit guide on the Bandwidth Tester:
+
+  http://www.xsplit.com/broadcaster/help/index.html?bandwidth_tester_guide.htm
+
+   "If your video bitrate setting is generally low (<500 kbps) then you will
+    often find that the bandwidth tester overshoots the target by a small
+    margin and if your bitrate setting is equally high (>2000 kbps) then you
+    may find that the tester slightly undershoots the target of MBR + ABR
+    (don't ask why)."
+
+
 Problem: I cannot type anything in the TCPRelay console window.
 
 Solution: The TCPRelay console window does not accept input. If you wish to
@@ -310,4 +328,4 @@ Contact me by e-mail: ivan.rober@gmail.com
   or on my blog: http://strikerx3.blogspot.com/
   or on Twitch.tv (shameless plug! :D): http://www.twitch.tv/strikerx3
 
-Have fun streaming! :)
+Have fun streaming without that pesky XSplit bandwidth cap! :)

@@ -43,7 +43,10 @@ namespace TCPRelayWindow
             this.lblVersionCopyright = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tcpRelayConnectionsPanel1 = new TCPRelayControls.ConnectionsPanel();
+            this.numSendBuffer = new System.Windows.Forms.NumericUpDown();
+            this.lblSendBuffer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numListenPort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSendBuffer)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTargetURI
@@ -68,7 +71,7 @@ namespace TCPRelayWindow
             // 
             resources.ApplyResources(this.numListenPort, "numListenPort");
             this.numListenPort.Maximum = new decimal(new int[] {
-            65500,
+            65535,
             0,
             0,
             0});
@@ -127,10 +130,33 @@ namespace TCPRelayWindow
             resources.ApplyResources(this.tcpRelayConnectionsPanel1, "tcpRelayConnectionsPanel1");
             this.tcpRelayConnectionsPanel1.Name = "tcpRelayConnectionsPanel1";
             // 
+            // numSendBuffer
+            // 
+            resources.ApplyResources(this.numSendBuffer, "numSendBuffer");
+            this.numSendBuffer.Maximum = new decimal(new int[] {
+            16384,
+            0,
+            0,
+            0});
+            this.numSendBuffer.Name = "numSendBuffer";
+            this.toolTip1.SetToolTip(this.numSendBuffer, resources.GetString("numSendBuffer.ToolTip"));
+            this.numSendBuffer.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // lblSendBuffer
+            // 
+            resources.ApplyResources(this.lblSendBuffer, "lblSendBuffer");
+            this.lblSendBuffer.Name = "lblSendBuffer";
+            // 
             // TCPRelayForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.numSendBuffer);
+            this.Controls.Add(this.lblSendBuffer);
             this.Controls.Add(this.lblVersionCopyright);
             this.Controls.Add(this.tcpRelayConnectionsPanel1);
             this.Controls.Add(this.lblRunning);
@@ -144,6 +170,7 @@ namespace TCPRelayWindow
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TCPRelayForm_FormClosing);
             this.Load += new System.EventHandler(this.TCPRelayForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numListenPort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSendBuffer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,6 +189,8 @@ namespace TCPRelayWindow
         private TCPRelayControls.ConnectionsPanel tcpRelayConnectionsPanel1;
         private Label lblVersionCopyright;
         private ToolTip toolTip1;
+        private NumericUpDown numSendBuffer;
+        private Label lblSendBuffer;
     }
 }
 

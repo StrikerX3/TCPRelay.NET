@@ -179,4 +179,10 @@
   <data name="strStarted" xml:space="preserve">
     <value>Started</value>
   </data>
+  <data name="strSendBuffer" xml:space="preserve">
+    <value>Send Buffer (KB)</value>
+  </data>
+  <data name="strSendBufferHint" xml:space="preserve">
+    <value>The size of the socket send buffer. Try increasing this if you still get dropped frames or you have high latency to the server.</value>
+  </data>
 </root>

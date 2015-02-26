@@ -59,7 +59,7 @@ namespace TCPRelayConsole
                 }
                 else if (arg.StartsWith("-twitch.tv") || arg.StartsWith("-ttv"))
                 {
-                    // get twitch.tv ingest server list from https://api.twitch.tv/kraken/ingests
+                    // get twitch.tv ingest server list from http://api.justin.tv/api/ingest/xsplit.xml
                     ListTwitchTvServersAndExit();
                 }
                 else if (arg.StartsWith("-p:") || arg.StartsWith("-rp:") || arg.StartsWith("-port:") || arg.StartsWith("-relay-port:"))
@@ -203,6 +203,8 @@ namespace TCPRelayConsole
             Console.WriteLine("      Specifies the target host address (default: live.justin.tv)");
             Console.WriteLine("  -tp:<port> | -target-port:<port>");
             Console.WriteLine("      Specifies the target port (default: 1935)");
+            Console.WriteLine("  -sbs:<size> | -socket-buffer-size:<size>");
+            Console.WriteLine("      Specifies the socket send buffer size in KB (default: 8)");
             Console.WriteLine("  -debug");
             Console.WriteLine("      Enters debug mode, which enables additional logging and tracing");
             Console.WriteLine("      (use this if you're having issues with TCPRelay)");

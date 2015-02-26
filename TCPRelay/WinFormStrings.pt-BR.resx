@@ -179,4 +179,10 @@
 [&lt;protocolo&gt;://]&lt;host&gt;[:&lt;porta&gt;][/caminho]
 [...] denota partes opcionais</value>
   </data>
+  <data name="strSendBuffer" xml:space="preserve">
+    <value>Buffer de Envio (KB)</value>
+  </data>
+  <data name="strSendBufferHint" xml:space="preserve">
+    <value>O tamanho do buffer de envio do socket. Tente aumentar este valor caso ainda esteja tendo perda de quadros ou se estiver conectando a um servidor com alta latência.</value>
+  </data>
 </root>
