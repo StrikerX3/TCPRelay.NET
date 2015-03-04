@@ -70,6 +70,15 @@ namespace TCPRelayWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advanced Settings.
+        /// </summary>
+        internal static string strAdvancedSettingsTitle {
+            get {
+                return ResourceManager.GetString("strAdvancedSettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string strCancel {

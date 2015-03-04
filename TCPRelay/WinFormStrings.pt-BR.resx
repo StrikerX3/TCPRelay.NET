@@ -212,4 +212,7 @@
   <data name="strToRemote" xml:space="preserve">
     <value>Para Remoto</value>
   </data>
+  <data name="strAdvancedSettingsTitle" xml:space="preserve">
+    <value>Configurações Avançadas</value>
+  </data>
 </root>

@@ -29,6 +29,9 @@ namespace TCPRelayWindow
 
         public void LoadSettings()
         {
+            // rename window title
+            this.Text = rm.GetString("strAdvancedSettingsTitle");
+
             // load settings from the params object
             chbSendBufferApp.Checked = RelayParams.SendBufferSizeApp != null;
             chbSendBufferRemote.Checked = RelayParams.SendBufferSizeRemote != null;
