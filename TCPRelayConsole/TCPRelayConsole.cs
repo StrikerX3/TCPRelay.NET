@@ -80,8 +80,8 @@ namespace TCPRelayConsole
                 else if (arg.StartsWith("-sbs:") || arg.StartsWith("-socket-buffer-size:"))
                 {
                     // set socket buffer size (for debugging/tweaking purposes)
-                    relay.SocketBufferSize = ToInt(arg) * 1024;
-                    Console.WriteLine("Socket buffer size set to " + relay.SocketBufferSize / 1024 + " KB");
+                    relay.Parameters.SendBufferSizeRemote = ToInt(arg) * 1024;
+                    Console.WriteLine("Socket buffer size set to " + relay.Parameters.SendBufferSizeRemote / 1024 + " KB");
                 }
                 else if (EqualsIgnoreCase("-debug", arg))
                 {

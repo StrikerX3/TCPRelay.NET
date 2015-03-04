@@ -185,4 +185,31 @@
   <data name="strSendBufferHint" xml:space="preserve">
     <value>O tamanho do buffer de envio do socket. Tente aumentar este valor caso ainda esteja tendo perda de quadros ou se estiver conectando a um servidor com alta latência.</value>
   </data>
+  <data name="strAdvancedSettings" xml:space="preserve">
+    <value>Configurações Avançadas...</value>
+  </data>
+  <data name="strCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="strConnectionTimeout" xml:space="preserve">
+    <value>Timeout de Conexão (seg.)</value>
+  </data>
+  <data name="strFromApplication" xml:space="preserve">
+    <value>Da Aplicação</value>
+  </data>
+  <data name="strInternalBufferSize" xml:space="preserve">
+    <value>Tamanho do Buffer Interno (KB)</value>
+  </data>
+  <data name="strNoDelay" xml:space="preserve">
+    <value>Ativar No Delay</value>
+  </data>
+  <data name="strOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="strReceiveBuffer" xml:space="preserve">
+    <value>Buffer de Recebimento (KB)</value>
+  </data>
+  <data name="strToRemote" xml:space="preserve">
+    <value>Para Remoto</value>
+  </data>
 </root>
