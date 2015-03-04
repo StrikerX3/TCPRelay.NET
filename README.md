@@ -1,10 +1,10 @@
-# TCPRelay v0.4 alpha 3
+# TCPRelay v0.4 alpha 4
 
 ## Introduction
 
 TCPRelay's main purpose is to serve as an intermediator between streaming programs and the actual streaming servers. For some reason certain streaming programs have poor network handling code and are unable to push enough data to the RTMP servers even though users have more than enough upload speed.
 
-TCPRelay started out as a quick'n'dirty program just to test XSplit's upload bandwidth issues. I was surprised to see it worked.
+TCPRelay started out as a quick'n'dirty program just to test XSplit's upload bandwidth issues. I was surprised to see it worked. It works by relaying TCP streams between an application and the destination server, allowing users to tune the socket parameters for improved performance.
 
 Streaming directly to Twitch.tv with XSplit:
 ![Streaming directly to Twitch.tv with XSplit](http://i.imgur.com/Qlgv7.png)
@@ -13,7 +13,7 @@ Streaming to Twitch.tv through the relay:
 ![Streaming to Twitch.tv through the relay](http://i.imgur.com/lNh3Z.png)
 
 
-## What's new in v0.4 alpha 3
+## What's new in v0.4 alpha 4
 
 - **General**
     - **NEW:** partial localization support for:
@@ -26,6 +26,12 @@ Streaming to Twitch.tv through the relay:
     - GUI: use the newly added Send Buffer field to adjust the buffer size
     - The default size is 8 KB
     - Increasing this might help reduce or eliminate dropped frames, especially on connections with high latency to the server
+  - **NEW**: [a4] added a new Advanced Settings window for tuning socket parameters
+    - Socket Send Buffer Size moved to this window
+    - Added Receive Buffer Size
+    - Added No Delay
+    - Added Connection Timeout
+    - Can set up parameters for both the application- and the remote-facing sockets
 - GUI
   - **FIXED**: status tooltip did not clear when TCPRelay was started sucessfully after an error.
   - **FIXED**: added localization support for several hard-coded strings.

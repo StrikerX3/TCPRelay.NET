@@ -15,8 +15,7 @@ namespace TCPRelayCommon
         public string TargetHost;
         public int TargetPort;
 
-        public int ConnectTimeout;
-        public int SocketBufferSize;
+        public readonly TCPRelayParams Parameters;
 
         private bool Running;
 
@@ -36,11 +35,8 @@ namespace TCPRelayCommon
         {
             TargetHost = "live.justin.tv";
             TargetPort = 1935;
-
             ListenPort = 1935;
-
-            ConnectTimeout = 15;
-            SocketBufferSize = 8 * 1024;
+            Parameters = new TCPRelayParams();
         }
 
         private void SetCultures(params Thread[] ts)
@@ -65,6 +61,9 @@ namespace TCPRelayCommon
             try
             {
                 svr = new TcpListener(IPAddress.Any, ListenPort);
+                if (Parameters.SendBufferSizeApp != null) svr.Server.SendBufferSize = Parameters.SendBufferSizeApp.Value * 1024;
+                if (Parameters.RecvBufferSizeApp != null) svr.Server.ReceiveBufferSize = Parameters.RecvBufferSizeApp.Value * 1024;
+                svr.Server.NoDelay = Parameters.NoDelayApp;
                 svr.Start();
 
                 Running = true;
@@ -75,9 +74,10 @@ namespace TCPRelayCommon
                     try
                     {
                         sSrc = svr.AcceptTcpClient();
+                        // or here?
 
                         Listeners. ForEach((listener) => listener.ConnectionAttempt(this, sSrc.Client.RemoteEndPoint as IPEndPoint, TargetHost, TargetPort));
-                        TcpClient sTarget = CreateTcpClient(TargetHost, TargetPort, ConnectTimeout, SocketBufferSize);
+                        TcpClient sTarget = CreateTcpClient(TargetHost, TargetPort);
                         Connection c = new Connection(sSrc, sTarget, TargetHost, TargetPort);
                         Connections.Add(c);
                         Listeners.ForEach((listener) => listener.ConnectionAccepted(this, c));
@@ -116,10 +116,14 @@ namespace TCPRelayCommon
             }
         }
 
-        private TcpClient CreateTcpClient(string TargetHost, int TargetPort, int timeoutSeconds, int bufferSize)
+        private TcpClient CreateTcpClient(string TargetHost, int TargetPort)
         {
             TcpClient tcp = new TcpClient();
-            tcp.SendBufferSize = bufferSize;
+            if (Parameters.SendBufferSizeRemote != null) tcp.SendBufferSize = Parameters.SendBufferSizeRemote.Value * 1024;
+            if (Parameters.RecvBufferSizeRemote != null) tcp.ReceiveBufferSize = Parameters.RecvBufferSizeRemote.Value * 1024;
+            tcp.NoDelay = Parameters.NoDelayRemote;
+            int timeoutSeconds = Parameters.ConnectTimeout ?? 15;
+
             IAsyncResult ar = tcp.BeginConnect(TargetHost, TargetPort, null, null);
             WaitHandle wh = ar.AsyncWaitHandle;
             try
@@ -178,7 +182,7 @@ namespace TCPRelayCommon
             Thread.CurrentThread.Name = "TCPRelay Pipe Thread [" + srcEndPoint + " - " + destEndPoint + "]";
             relay.Listeners.ForEach((listener) => listener.OpenPipe(relay, c, srcEndPoint, destEndPoint));
 
-            byte[] buf = new byte[relay.SocketBufferSize];
+            byte[] buf = new byte[relay.Parameters.InternalBufferSize * 1024];
             try
             {
                 do

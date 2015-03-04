@@ -18,25 +18,26 @@ namespace TCPRelayWindow
     {
         private TCPRelay relay = new TCPRelay();
         private ResourceManager rm;
+        private AdvancedSettingsForm advForm;
 
         public TCPRelayForm()
         {
             InitializeComponent();
 
             rm = new ResourceManager("TCPRelayWindow.WinFormStrings", typeof(TCPRelayForm).Assembly);
+            advForm = new AdvancedSettingsForm(relay.Parameters);
 
             AssemblyInfoHelper helper = new AssemblyInfoHelper(typeof(TCPRelayWindow));
-            lblVersionCopyright.Text = "TCPRelay v" + helper.AssemblyInformationalVersion + "   " + helper.Copyright;
+            lblVersionCopyright.Text = "TCPRelay v" + helper.AssemblyInformationalVersion;
 
             lblTargetURI.Text = rm.GetString("strTargetURI") + ":";
             lblListenPort.Text = rm.GetString("strListenPort") + ":";
-            lblSendBuffer.Text = rm.GetString("strSendBuffer") + ":";
+            btnAdvancedSettings.Text = rm.GetString("strAdvancedSettings");
             lblRunning.Text = rm.GetString("strStopped");
             btnStartStop.Text = rm.GetString("strStart");
             toolTip1.SetToolTip(btnStartStop, rm.GetString("strStartsTheRelay"));
             toolTip1.SetToolTip(cbxTargetURI, rm.GetString("strTargetURIHint"));
             toolTip1.SetToolTip(numListenPort, rm.GetString("strListenPortHint"));
-            toolTip1.SetToolTip(numSendBuffer, rm.GetString("strSendBufferHint"));
             toolTip1.SetToolTip(btnLoadTTVServers, rm.GetString("strLoadTwitchTVServersHint"));
 
             RebuildLayout();
@@ -76,10 +77,9 @@ namespace TCPRelayWindow
             cbxTargetURI.Left = uriPortLeft;
             numListenPort.Left = uriPortLeft;
 
-            // move Send Buffer field to the right of the Listen Port
-            lblSendBuffer.Left = numListenPort.Right + margin;
-            lblSendBuffer.Width = FindWidestString(lblRunning.Font, rm.GetString("lblSendBuffer"));
-            numSendBuffer.Left = lblSendBuffer.Right + margin;
+            // move Advanced Settings button to the right of the Listen Port
+            btnAdvancedSettings.Left = numListenPort.Right + margin;
+            btnAdvancedSettings.Width = 10 + FindWidestString(lblRunning.Font, rm.GetString("strAdvancedSettings"));
 
             // resize and reposition Target URI field width to fit the new position
             cbxTargetURI.Width += uriDelta + ttvDelta;
@@ -113,9 +113,6 @@ namespace TCPRelayWindow
             int? listenPort = RegistryUtils.GetDWord("LastListenPort");
             if (listenPort != null)
                 numListenPort.Value = (decimal)listenPort;
-            int? sendBufferSize = RegistryUtils.GetDWord("LastSendBuffer");
-            if (sendBufferSize != null)
-                numSendBuffer.Value = (decimal)sendBufferSize;
 
             initTargetURIListWorker.RunWorkerAsync();
             relay.Listeners.Add(this);
@@ -157,11 +154,6 @@ namespace TCPRelayWindow
             return (int)numListenPort.Value;
         }
 
-        private int GetSocketBufferSize()
-        {
-            return (int)numSendBuffer.Value;
-        }
-        
         private void btnStartStop_Click(object sender, EventArgs e)
         {
             if (relay.IsRunning)
@@ -185,7 +177,6 @@ namespace TCPRelayWindow
                 relay.TargetPort = rtmpUri.Port == -1 ? 1935 : rtmpUri.Port;
 
                 relay.ListenPort = GetListenPort();
-                relay.SocketBufferSize = GetSocketBufferSize() * 1024;
 
                 relay.Start();
             }
@@ -281,6 +272,12 @@ namespace TCPRelayWindow
                 if (!currentURIs.Contains(newUri))
                     cbxTargetURI.Items.Add(newUri);
             }
+        }
+
+        private void btnAdvancedSettings_Click(object sender, EventArgs e)
+        {
+            advForm.LoadSettings();
+            advForm.Show(this);
         }
 
         private void AddControl(Control container, Control control)
@@ -389,7 +386,7 @@ namespace TCPRelayWindow
         {
             DelegateUtils.SetEnabled(this, cbxTargetURI, false);
             DelegateUtils.SetEnabled(this, numListenPort, false);
-            DelegateUtils.SetEnabled(this, numSendBuffer, false);
+            DelegateUtils.SetEnabled(this, btnAdvancedSettings, false);
             DelegateUtils.SetEnabled(this, btnLoadTTVServers, false);
             DelegateUtils.SetEnabled(this, btnStartStop, true);
 
@@ -400,7 +397,6 @@ namespace TCPRelayWindow
 
             DelegateUtils.DoAction(this, cbxTargetURI, (cbx) => RegistryUtils.SetString("LastTargetURI", GetTargetURI().ToString()));
             DelegateUtils.DoAction(this, numListenPort, (cbx) => RegistryUtils.SetDWord("LastListenPort", GetListenPort()));
-            DelegateUtils.DoAction(this, numSendBuffer, (cbx) => RegistryUtils.SetDWord("LastSendBuffer", GetSocketBufferSize()));
 
             // TODO refactor this!
             DelegateUtils.DoAction(this, cbxTargetURI, (cbx) =>
@@ -419,7 +415,7 @@ namespace TCPRelayWindow
         {
             DelegateUtils.SetEnabled(this, cbxTargetURI, true);
             DelegateUtils.SetEnabled(this, numListenPort, true);
-            DelegateUtils.SetEnabled(this, numSendBuffer, true);
+            DelegateUtils.SetEnabled(this, btnAdvancedSettings, true);
             DelegateUtils.SetEnabled(this, btnLoadTTVServers, true);
             DelegateUtils.SetEnabled(this, btnStartStop, true);
 
@@ -433,7 +429,7 @@ namespace TCPRelayWindow
         {
             DelegateUtils.SetEnabled(this, cbxTargetURI, true);
             DelegateUtils.SetEnabled(this, numListenPort, true);
-            DelegateUtils.SetEnabled(this, numSendBuffer, true);
+            DelegateUtils.SetEnabled(this, btnAdvancedSettings, true);
 
             DelegateUtils.SetEnabled(this, btnStartStop, true);
             DelegateUtils.SetText(this, btnStartStop, rm.GetString("strStart"));

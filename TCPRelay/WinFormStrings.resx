@@ -185,4 +185,31 @@
   <data name="strSendBufferHint" xml:space="preserve">
     <value>The size of the socket send buffer. Try increasing this if you still get dropped frames or you have high latency to the server.</value>
   </data>
+  <data name="strAdvancedSettings" xml:space="preserve">
+    <value>Advanced Settings...</value>
+  </data>
+  <data name="strCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="strConnectionTimeout" xml:space="preserve">
+    <value>Connection Timeout (sec.)</value>
+  </data>
+  <data name="strFromApplication" xml:space="preserve">
+    <value>From Application</value>
+  </data>
+  <data name="strInternalBufferSize" xml:space="preserve">
+    <value>Internal Buffer Size (KB)</value>
+  </data>
+  <data name="strNoDelay" xml:space="preserve">
+    <value>Enable No Delay</value>
+  </data>
+  <data name="strOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="strReceiveBuffer" xml:space="preserve">
+    <value>Receive Buffer (KB)</value>
+  </data>
+  <data name="strToRemote" xml:space="preserve">
+    <value>To Remote</value>
+  </data>
 </root>

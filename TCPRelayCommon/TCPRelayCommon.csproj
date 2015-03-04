@@ -51,6 +51,7 @@
     <Compile Include="RegistryUtils.cs" />
     <Compile Include="TCPRelay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TCPRelayParams.cs" />
     <Compile Include="TwitchTvIngestServerData.cs" />
   </ItemGroup>
   <ItemGroup>

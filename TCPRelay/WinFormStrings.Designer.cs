@@ -61,6 +61,33 @@ namespace TCPRelayWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advanced Settings....
+        /// </summary>
+        internal static string strAdvancedSettings {
+            get {
+                return ResourceManager.GetString("strAdvancedSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string strCancel {
+            get {
+                return ResourceManager.GetString("strCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection Timeout (sec.).
+        /// </summary>
+        internal static string strConnectionTimeout {
+            get {
+                return ResourceManager.GetString("strConnectionTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not resolve host name.
         /// </summary>
         internal static string strCouldNotResolveHostName {
@@ -84,6 +111,24 @@ namespace TCPRelayWindow {
         internal static string strFailedToStartTCPRelay {
             get {
                 return ResourceManager.GetString("strFailedToStartTCPRelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Application.
+        /// </summary>
+        internal static string strFromApplication {
+            get {
+                return ResourceManager.GetString("strFromApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal Buffer Size (KB).
+        /// </summary>
+        internal static string strInternalBufferSize {
+            get {
+                return ResourceManager.GetString("strInternalBufferSize", resourceCulture);
             }
         }
         
@@ -133,6 +178,24 @@ namespace TCPRelayWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable No Delay.
+        /// </summary>
+        internal static string strNoDelay {
+            get {
+                return ResourceManager.GetString("strNoDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string strOK {
+            get {
+                return ResourceManager.GetString("strOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The port {0} is already in use. Check if TCPRelay is already running or change the listen port..
         /// </summary>
         internal static string strPortAlreadyInUse {
@@ -147,6 +210,15 @@ namespace TCPRelayWindow {
         internal static string strPortAlreadyInUseByProcess {
             get {
                 return ResourceManager.GetString("strPortAlreadyInUseByProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receive Buffer (KB).
+        /// </summary>
+        internal static string strReceiveBuffer {
+            get {
+                return ResourceManager.GetString("strReceiveBuffer", resourceCulture);
             }
         }
         
@@ -257,6 +329,15 @@ namespace TCPRelayWindow {
         internal static string strTargetURIHint {
             get {
                 return ResourceManager.GetString("strTargetURIHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Remote.
+        /// </summary>
+        internal static string strToRemote {
+            get {
+                return ResourceManager.GetString("strToRemote", resourceCulture);
             }
         }
     }

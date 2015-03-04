@@ -1,18 +1,24 @@
-TCPRelay v0.4 alpha 3
+TCPRelay v0.4 alpha 4
   by Ivan "StrikerX3" Oliveira
 
 
 Introduction
 ------------
-TCPRelay's main purpose is to serve as an intermediator between streaming programs and the actual streaming servers. For some reason certain streaming programs have poor network handling code and are unable to push enough data to the RTMP servers even though users have more than enough upload speed.
+TCPRelay's main purpose is to serve as an intermediator between streaming
+programs and the actual streaming servers. For some reason certain streaming
+programs have poor network handling code and are unable to push enough data to
+the RTMP servers even though users have more than enough upload speed.
 
-TCPRelay started out as a quick'n'dirty program just to test XSplit's upload bandwidth issues. I was surprised to see it worked.
+TCPRelay started out as a quick'n'dirty program just to test XSplit's upload
+bandwidth issues. I was surprised to see it worked. It works by relaying TCP
+streams between an application and the destination server, allowing users to
+tune the socket parameters for improved performance.
 
 Streaming directly to Justin.tv with XSplit: http://i.imgur.com/Qlgv7.png
 Streaming to Justin.tv through the relay: http://i.imgur.com/lNh3Z.png
 
 
-What's new in v0.4 alpha 3
+What's new in v0.4 alpha 4
 --------------------------
 - General
   - NEW: partial localization support for:
@@ -22,10 +28,10 @@ What's new in v0.4 alpha 3
     NOTE: only the GUI version has support for localization for now.
   - NEW: [a3] socket send buffer size can be tweaked from the console and GUI
     - Console: use the -sbs:## parameter
-	- GUI: use the newly added Send Buffer field to adjust the buffer size
-	- The default size is 8 KB
-  - Increasing this might help reduce or eliminate dropped frames, especially
-  on connections with high latency to the server
+    - GUI: use the newly added Send Buffer field to adjust the buffer size
+    - The default size is 8 KB
+    - Increasing this might help reduce or eliminate dropped frames, especially
+      on connections with high latency to the server
 - GUI
   - FIXED: [a1] status tooltip did not clear when TCPRelay was started
     sucessfully after an error.
@@ -34,6 +40,13 @@ What's new in v0.4 alpha 3
     should no longer overlap.
   - FIXED: [a2] old Twitch.tv ingest server list was shut down. Updated to the
     new Kraken REST API. Fixes an error when starting TCPRelay.
+  - NEW: [a4] added a new Advanced Settings window for tuning socket parameters
+    - Socket Send Buffer Size moved to this window
+    - Added Receive Buffer Size
+    - Added No Delay
+    - Added Connection Timeout
+    - Can set up parameters for both the application- and the remote-facing
+      sockets
 
 See the history.txt file for earlier versions.
 
@@ -221,7 +234,7 @@ Solution: Try running TCPRelay from the command prompt (Run > cmd > cd to the
   To solve this, open a command prompt and type:
 
     netstat -ano | find ":<port>"
-	(where <port> is 1935 or the listen port you configured)
+  (where <port> is 1935 or the listen port you configured)
 
   This command may or may not display lines like this:
 

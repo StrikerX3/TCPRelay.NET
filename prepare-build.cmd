@@ -12,6 +12,7 @@ xcopy TCPRelay\bin\Release\nl-NL out\x86\nl-NL /y /i
 copy TCPRelayCommon\readme.txt out\x86
 copy TCPRelayCommon\history.txt out\x86
 copy TCPRelayConsole\bin\Release\TCPRelayC.exe out\x86
+copy LICENSE out\x86
 
 copy TCPRelay\bin\x64\Release\TCPRelay.exe out\x64
 copy TCPRelay\bin\x64\Release\Newtonsoft.Json.dll out\x64
@@ -23,3 +24,4 @@ xcopy TCPRelay\bin\x64\Release\nl-NL out\x64\nl-NL /y /i
 copy TCPRelayCommon\readme.txt out\x64
 copy TCPRelayCommon\history.txt out\x64
 copy TCPRelayConsole\bin\x64\Release\TCPRelayC.exe out\x64
+copy LICENSE out\x64
