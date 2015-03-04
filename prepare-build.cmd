@@ -1,3 +1,6 @@
+del /s /f /q out
+rd /s /q out
+
 md out
 md out\x86
 md out\x64
