@@ -26,17 +26,17 @@ Streaming to Twitch.tv through the relay:
     - GUI: use the newly added Send Buffer field to adjust the buffer size
     - The default size is 8 KB
     - Increasing this might help reduce or eliminate dropped frames, especially on connections with high latency to the server
+- GUI
+  - **FIXED**: status tooltip did not clear when TCPRelay was started sucessfully after an error.
+  - **FIXED**: added localization support for several hard-coded strings.
+  - **FIXED**: component layout updated manually for localization. Components should no longer overlap.
+  - **FIXED**: old Twitch.tv ingest server list was shut down. Updated to the new Kraken REST API. Fixes an error when starting TCPRelay.
   - **NEW**: [a4] added a new Advanced Settings window for tuning socket parameters
     - Socket Send Buffer Size moved to this window
     - Added Receive Buffer Size
     - Added No Delay
     - Added Connection Timeout
     - Can set up parameters for both the application- and the remote-facing sockets
-- GUI
-  - **FIXED**: status tooltip did not clear when TCPRelay was started sucessfully after an error.
-  - **FIXED**: added localization support for several hard-coded strings.
-  - **FIXED**: component layout updated manually for localization. Components should no longer overlap.
-  - **FIXED**: old Twitch.tv ingest server list was shut down. Updated to the new Kraken REST API. Fixes an error when starting TCPRelay.
 
 
 ## Requirements
