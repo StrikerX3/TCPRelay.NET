@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.NetworkInformation;
 
 namespace TCPRelayCommon
 {
@@ -74,7 +75,6 @@ namespace TCPRelayCommon
                     try
                     {
                         sSrc = svr.AcceptTcpClient();
-                        // or here?
 
                         Listeners. ForEach((listener) => listener.ConnectionAttempt(this, sSrc.Client.RemoteEndPoint as IPEndPoint, TargetHost, TargetPort));
                         TcpClient sTarget = CreateTcpClient(TargetHost, TargetPort);
@@ -118,11 +118,12 @@ namespace TCPRelayCommon
 
         private TcpClient CreateTcpClient(string TargetHost, int TargetPort)
         {
-            TcpClient tcp = new TcpClient();
+            TcpClient tcp = new TcpClient(new IPEndPoint(Parameters.BindIP, 0));
             if (Parameters.SendBufferSizeRemote != null) tcp.SendBufferSize = Parameters.SendBufferSizeRemote.Value * 1024;
             if (Parameters.RecvBufferSizeRemote != null) tcp.ReceiveBufferSize = Parameters.RecvBufferSizeRemote.Value * 1024;
             tcp.NoDelay = Parameters.NoDelayRemote;
             int timeoutSeconds = Parameters.ConnectTimeout ?? 15;
+            
 
             IAsyncResult ar = tcp.BeginConnect(TargetHost, TargetPort, null, null);
             WaitHandle wh = ar.AsyncWaitHandle;

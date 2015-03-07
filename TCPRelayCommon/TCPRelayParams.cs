@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace TCPRelayCommon
@@ -19,6 +20,8 @@ namespace TCPRelayCommon
         public bool NoDelayApp;
         public bool NoDelayRemote;
 
+        public IPAddress BindIP;
+
         public TCPRelayParams()
         {
             // load settings from registry if available
@@ -32,6 +35,12 @@ namespace TCPRelayCommon
 
             NoDelayApp = RegistryUtils.GetBoolean("NoDelayApp", false);
             NoDelayRemote = RegistryUtils.GetBoolean("NoDelayRemote", false);
+
+            string bindIPAddr = RegistryUtils.GetString("BindIP");
+            if (!IPAddress.TryParse(bindIPAddr, out BindIP))
+            {
+                BindIP = IPAddress.Any;
+            }
         }
     }
 }

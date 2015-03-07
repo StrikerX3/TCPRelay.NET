@@ -210,9 +210,18 @@
     <value>Receive Buffer (KB)</value>
   </data>
   <data name="strToRemote" xml:space="preserve">
-    <value>To Remote</value>
+    <value>To Remote Server</value>
   </data>
   <data name="strAdvancedSettingsTitle" xml:space="preserve">
     <value>Advanced Settings</value>
+  </data>
+  <data name="strBindToAddress" xml:space="preserve">
+    <value>Bind to Address</value>
+  </data>
+  <data name="strDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="strPreferredAddress" xml:space="preserve">
+    <value>Preferred Address</value>
   </data>
 </root>

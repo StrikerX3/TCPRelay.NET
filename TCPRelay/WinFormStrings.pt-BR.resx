@@ -210,9 +210,18 @@
     <value>Buffer de Recebimento (KB)</value>
   </data>
   <data name="strToRemote" xml:space="preserve">
-    <value>Para Remoto</value>
+    <value>Para Servidor Remoto</value>
   </data>
   <data name="strAdvancedSettingsTitle" xml:space="preserve">
     <value>Configurações Avançadas</value>
+  </data>
+  <data name="strBindToAddress" xml:space="preserve">
+    <value>Vincular ao Endereço</value>
+  </data>
+  <data name="strDefault" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="strPreferredAddress" xml:space="preserve">
+    <value>Endereço Preferido</value>
   </data>
 </root>

@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Resources;
 using System.Text;
 using System.Windows.Forms;
@@ -54,6 +57,71 @@ namespace TCPRelayWindow
             numReceiveBufferApp.Enabled = chbReceiveBufferApp.Checked;
             numReceiveBufferRemote.Enabled = chbReceiveBufferRemote.Checked;
             numConnTimeoutRemote.Enabled = chbConnTimeoutRemote.Checked;
+
+            // populate network interface list
+            NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
+            List<IPAddressItem> ipv4Addresses = new List<IPAddressItem>();
+            List<IPAddressItem> ipv6Addresses = new List<IPAddressItem>();
+            foreach (NetworkInterface iface in interfaces)
+            {
+                if (iface.NetworkInterfaceType == NetworkInterfaceType.Ethernet
+                    || iface.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
+                {
+                    foreach (var addr in iface.GetIPProperties().UnicastAddresses)
+                    {
+                        switch (addr.Address.AddressFamily)
+                        {
+                            case AddressFamily.InterNetwork:
+                                ipv4Addresses.Add(new IPAddressItem(iface, addr.Address));
+                                break;
+                            case AddressFamily.InterNetworkV6:
+                                ipv6Addresses.Add(new IPAddressItem(iface, addr.Address));
+                                break;
+                        }
+                    }
+                }
+            }
+
+            bool foundAddress = false;
+            cbxAddresses.Items.Clear();
+            cbxAddresses.Items.Add(new DefaultIPAddressItem());
+            foreach (IPAddressItem item in ipv4Addresses)
+            {
+                cbxAddresses.Items.Add(item);
+                if (RelayParams.BindIP.Equals(item.Address))
+                {
+                    cbxAddresses.SelectedItem = item;
+                    foundAddress = true;
+                }
+            }
+            foreach (IPAddressItem item in ipv6Addresses)
+            {
+                cbxAddresses.Items.Add(item);
+                if (RelayParams.BindIP.Equals(item.Address))
+                {
+                    cbxAddresses.SelectedItem = item;
+                    foundAddress = true;
+                }
+            }
+            if (!foundAddress)
+            {
+                cbxAddresses.SelectedIndex = 0;
+            }
+            cbxAddresses.Width = DropDownWidth(cbxAddresses) + 18;
+        }
+
+        private int DropDownWidth(ComboBox myCombo)
+        {
+            int maxWidth = 0, temp = 0;
+            foreach (var obj in myCombo.Items)
+            {
+                temp = TextRenderer.MeasureText(obj.ToString(), myCombo.Font).Width;
+                if (temp > maxWidth)
+                {
+                    maxWidth = temp;
+                }
+            }
+            return maxWidth;
         }
 
         // TODO duplicate method in TCPRelayForm
@@ -89,19 +157,23 @@ namespace TCPRelayWindow
                 rm.GetString("strReceiveBuffer") + ":",
                 rm.GetString("strConnectionTimeout") + ":",
                 rm.GetString("strNoDelay") + ":",
-                rm.GetString("strInternalBufferSize") + ":");
+                rm.GetString("strInternalBufferSize") + ":",
+                rm.GetString("strBindToAdapter") + ":",
+                rm.GetString("strPreferredAddress") + ":");
 
             lblSendBuffer.Text = rm.GetString("strSendBuffer") + ":";
             lblRecvBuffer.Text = rm.GetString("strReceiveBuffer") + ":";
             lblConnTimeout.Text = rm.GetString("strConnectionTimeout") + ":";
             lblNoDelay.Text = rm.GetString("strNoDelay") + ":";
             lblInternalBuffer.Text = rm.GetString("strInternalBufferSize") + ":";
-
+            lblBindToAddress.Text = rm.GetString("strBindToAddress") + ":";
+            
             AdjustWidth(lblSendBuffer);
             AdjustWidth(lblRecvBuffer);
             AdjustWidth(lblConnTimeout);
             AdjustWidth(lblNoDelay);
             AdjustWidth(lblInternalBuffer);
+            AdjustWidth(lblBindToAddress);
 
             // reposition all components in columns
 
@@ -113,6 +185,7 @@ namespace TCPRelayWindow
             chbSendBufferApp.Left = overrideAppLeft;
             chbReceiveBufferApp.Left = overrideAppLeft;
             chbNoDelayApp.Left = overrideAppLeft;
+            cbxAddresses.Left = overrideAppLeft;
 
             // app values
             int valueAppLeft = chbSendBufferApp.Right + margin;
@@ -121,7 +194,7 @@ namespace TCPRelayWindow
             numInternalBufferSize.Left = valueAppLeft;
             
             // override remote values
-            int overrideRemoteLeft = Math.Max(lblFromApp.Right + margin + spacing, numSendBufferApp.Right + margin + spacing);
+            int overrideRemoteLeft = Max(lblFromApp.Right, numSendBufferApp.Right) + margin + spacing;
             lblToRemote.Left = overrideRemoteLeft;
             lblToRemote.Text = rm.GetString("strToRemote");
             AdjustWidth(lblToRemote);
@@ -137,8 +210,8 @@ namespace TCPRelayWindow
             numConnTimeoutRemote.Left = valueRemoteLeft;
 
             // adjust window size
-            int windowWidth = Math.Max(numSendBufferRemote.Right + spacing, lblToRemote.Right + spacing);
-            int windowHeight = numInternalBufferSize.Bottom + spacing + btnOK.Height + spacing;
+            int windowWidth = Max(lblToRemote.Right, numSendBufferRemote.Right, cbxAddresses.Right) + spacing;
+            int windowHeight = cbxAddresses.Bottom + spacing + btnOK.Height + spacing;
             this.ClientSize = new Size(windowWidth, windowHeight);
 
             // rename and reposition the OK and Cancel buttons
@@ -147,12 +220,22 @@ namespace TCPRelayWindow
                 rm.GetString("strCancel")));
             btnCancel.Text = rm.GetString("strCancel");
             btnCancel.Width = btnWidth;
-            btnCancel.Left = numConnTimeoutRemote.Right - btnWidth;
-            btnCancel.Top = numInternalBufferSize.Bottom + spacing;
+            btnCancel.Left = windowWidth - btnWidth - spacing;
+            btnCancel.Top = windowHeight - btnOK.Height - spacing;
             btnOK.Text = rm.GetString("strOK");
             btnOK.Width = btnWidth;
             btnOK.Left = btnCancel.Left - spacing - btnWidth;
-            btnOK.Top = numInternalBufferSize.Bottom + spacing;
+            btnOK.Top = btnCancel.Top;
+        }
+
+        private int Max(int firstValue, int secondValue, params int[] moreValues)
+        {
+            int max = Math.Max(firstValue, secondValue);
+            foreach (int value in moreValues)
+            {
+                max = Math.Max(max, value);
+            }
+            return max;
         }
 
         private void chbSendBufferApp_CheckedChanged(object sender, EventArgs e)
@@ -193,6 +276,7 @@ namespace TCPRelayWindow
             RelayParams.ConnectTimeout = GetValue((int)numConnTimeoutRemote.Value, chbConnTimeoutRemote.Checked);
 
             RelayParams.InternalBufferSize = (int)numInternalBufferSize.Value;
+            RelayParams.BindIP = ((IPAddressItem)cbxAddresses.SelectedItem).Address;
             
             
             // save settings to the registry
@@ -206,6 +290,7 @@ namespace TCPRelayWindow
             SetOrClearDword("ConnectTimeoutRemote", (int)numConnTimeoutRemote.Value, chbConnTimeoutRemote.Checked);
 
             RegistryUtils.SetDWord("InternalBufferSize", (int)numInternalBufferSize.Value);
+            SetOrClearString("BindIP", RelayParams.BindIP.ToString(), !RelayParams.BindIP.Equals(IPAddress.Any));
 
             Hide();
         }
@@ -230,6 +315,51 @@ namespace TCPRelayWindow
             {
                 RegistryUtils.Remove(valueName);
             }
+        }
+
+        private static void SetOrClearString(string valueName, string value, bool enabled)
+        {
+            if (enabled)
+            {
+                RegistryUtils.SetString(valueName, value);
+            }
+            else
+            {
+                RegistryUtils.Remove(valueName);
+            }
+        }
+    }
+
+    internal class IPAddressItem
+    {
+        public readonly IPAddress Address;
+        public readonly NetworkInterface NetworkInterface;
+
+        public IPAddressItem(NetworkInterface NetworkInterface, IPAddress Address)
+        {
+            this.Address = Address;
+            this.NetworkInterface = NetworkInterface;
+        }
+
+        public override string ToString()
+        {
+            return NetworkInterface.Name + " - " + Address.ToString();
+        }
+    }
+
+    internal class DefaultIPAddressItem : IPAddressItem
+    {
+        private string defaultString;
+
+        public DefaultIPAddressItem() : base(null, IPAddress.Any)
+        {
+            ResourceManager rm = new ResourceManager("TCPRelayWindow.WinFormStrings", typeof(AdvancedSettingsForm).Assembly);
+            defaultString = rm.GetString("strDefault");
+        }
+
+        public override string ToString()
+        {
+            return defaultString;
         }
     }
 }

@@ -1,4 +1,4 @@
-TCPRelay v0.4 alpha 4
+TCPRelay v0.4 beta 1
   by Ivan "StrikerX3" Oliveira
 
 
@@ -18,8 +18,8 @@ Streaming directly to Justin.tv with XSplit: http://i.imgur.com/Qlgv7.png
 Streaming to Justin.tv through the relay: http://i.imgur.com/lNh3Z.png
 
 
-What's new in v0.4 alpha 4
---------------------------
+What's new in v0.4 beta 1
+-------------------------
 - General
   - NEW: partial localization support for:
     - [es-AR] Spanish (Argentina)  (thanks to Nicolás Sigal)
@@ -47,6 +47,8 @@ What's new in v0.4 alpha 4
     - Added Connection Timeout
     - Can set up parameters for both the application- and the remote-facing
       sockets
+  - NEW: [b1] added an option to allow binding to a different IP address in the
+    Advanced Settings window
 
 See the history.txt file for earlier versions.
 
@@ -174,7 +176,8 @@ Solution: first, make sure TCPRelay is in the firewall exceptions.
 
     Server up at <machine-name>:1935
 
-  You can also find it in DxDiag or the computer properties (WinKey + Pause).
+  You can also find it in DxDiag, in the computer properties (WinKey + Pause) or
+  by typing "hostname" in the Windows Command Prompt.
 
   If you set the target address manually, make sure it is correct. TCPRelay will
   try to lookup the host name to ensure it is valid but will make no attempt to
@@ -330,4 +333,4 @@ Contact me by e-mail: ivan.rober@gmail.com
   or on my blog: http://strikerx3.blogspot.com/
   or on Twitch.tv (shameless plug! :D): http://www.twitch.tv/strikerx3
 
-Have fun streaming without that pesky XSplit bandwidth cap! :)
+Have fun streaming! :)

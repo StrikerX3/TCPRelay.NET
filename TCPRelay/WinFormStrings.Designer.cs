@@ -79,6 +79,15 @@ namespace TCPRelayWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bind to Address.
+        /// </summary>
+        internal static string strBindToAddress {
+            get {
+                return ResourceManager.GetString("strBindToAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string strCancel {
@@ -102,6 +111,15 @@ namespace TCPRelayWindow {
         internal static string strCouldNotResolveHostName {
             get {
                 return ResourceManager.GetString("strCouldNotResolveHostName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        internal static string strDefault {
+            get {
+                return ResourceManager.GetString("strDefault", resourceCulture);
             }
         }
         
@@ -219,6 +237,15 @@ namespace TCPRelayWindow {
         internal static string strPortAlreadyInUseByProcess {
             get {
                 return ResourceManager.GetString("strPortAlreadyInUseByProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferred Address.
+        /// </summary>
+        internal static string strPreferredAddress {
+            get {
+                return ResourceManager.GetString("strPreferredAddress", resourceCulture);
             }
         }
         
@@ -342,7 +369,7 @@ namespace TCPRelayWindow {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To Remote.
+        ///   Looks up a localized string similar to To Remote Server.
         /// </summary>
         internal static string strToRemote {
             get {

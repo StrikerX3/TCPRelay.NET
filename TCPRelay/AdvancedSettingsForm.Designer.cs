@@ -51,6 +51,8 @@
             this.chbConnTimeoutRemote = new System.Windows.Forms.CheckBox();
             this.numInternalBufferSize = new System.Windows.Forms.NumericUpDown();
             this.lblInternalBuffer = new System.Windows.Forms.Label();
+            this.lblBindToAddress = new System.Windows.Forms.Label();
+            this.cbxAddresses = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numSendBufferApp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numReceiveBufferApp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numReceiveBufferRemote)).BeginInit();
@@ -252,20 +254,20 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(225, 186);
+            this.btnOK.Location = new System.Drawing.Point(226, 208);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 13;
+            this.btnOK.TabIndex = 16;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(313, 186);
+            this.btnCancel.Location = new System.Drawing.Point(314, 208);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 14;
+            this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -313,12 +315,7 @@
             // 
             // numInternalBufferSize
             // 
-            this.numInternalBufferSize.Increment = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.numInternalBufferSize.Location = new System.Drawing.Point(181, 139);
+            this.numInternalBufferSize.Location = new System.Drawing.Point(181, 135);
             this.numInternalBufferSize.Maximum = new decimal(new int[] {
             1024,
             0,
@@ -331,7 +328,7 @@
             0});
             this.numInternalBufferSize.Name = "numInternalBufferSize";
             this.numInternalBufferSize.Size = new System.Drawing.Size(65, 20);
-            this.numInternalBufferSize.TabIndex = 15;
+            this.numInternalBufferSize.TabIndex = 13;
             this.numInternalBufferSize.Value = new decimal(new int[] {
             64,
             0,
@@ -341,17 +338,37 @@
             // lblInternalBuffer
             // 
             this.lblInternalBuffer.AutoSize = true;
-            this.lblInternalBuffer.Location = new System.Drawing.Point(12, 141);
+            this.lblInternalBuffer.Location = new System.Drawing.Point(12, 137);
             this.lblInternalBuffer.Name = "lblInternalBuffer";
             this.lblInternalBuffer.Size = new System.Drawing.Size(119, 13);
             this.lblInternalBuffer.TabIndex = 16;
             this.lblInternalBuffer.Text = "Internal Buffer Size (KB)";
             // 
+            // lblBindToAddress
+            // 
+            this.lblBindToAddress.AutoSize = true;
+            this.lblBindToAddress.Location = new System.Drawing.Point(12, 164);
+            this.lblBindToAddress.Name = "lblBindToAddress";
+            this.lblBindToAddress.Size = new System.Drawing.Size(81, 13);
+            this.lblBindToAddress.TabIndex = 18;
+            this.lblBindToAddress.Text = "Bind to Address";
+            // 
+            // cbxAddresses
+            // 
+            this.cbxAddresses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxAddresses.FormattingEnabled = true;
+            this.cbxAddresses.Location = new System.Drawing.Point(160, 161);
+            this.cbxAddresses.Name = "cbxAddresses";
+            this.cbxAddresses.Size = new System.Drawing.Size(229, 21);
+            this.cbxAddresses.TabIndex = 14;
+            // 
             // AdvancedSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 221);
+            this.ClientSize = new System.Drawing.Size(401, 243);
+            this.Controls.Add(this.lblBindToAddress);
+            this.Controls.Add(this.cbxAddresses);
             this.Controls.Add(this.numInternalBufferSize);
             this.Controls.Add(this.lblInternalBuffer);
             this.Controls.Add(this.numConnTimeoutRemote);
@@ -415,5 +432,7 @@
         private System.Windows.Forms.CheckBox chbConnTimeoutRemote;
         private System.Windows.Forms.NumericUpDown numInternalBufferSize;
         private System.Windows.Forms.Label lblInternalBuffer;
+        private System.Windows.Forms.Label lblBindToAddress;
+        private System.Windows.Forms.ComboBox cbxAddresses;
     }
 }

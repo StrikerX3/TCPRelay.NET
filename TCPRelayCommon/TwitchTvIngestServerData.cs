@@ -39,18 +39,20 @@ namespace TCPRelayCommon
 
         public static List<TwitchTvIngestServerData> Retrieve()
         {
-            HttpWebRequest req = HttpWebRequest.Create("https://api.twitch.tv/kraken/ingests") as HttpWebRequest;
             MemoryStream buf = new MemoryStream();
-            using (Stream resp = req.GetResponse().GetResponseStream())
+            HttpWebRequest req = HttpWebRequest.Create("https://api.twitch.tv/kraken/ingests") as HttpWebRequest;
+            req.KeepAlive = false;
+            using (WebResponse response = req.GetResponse())
+            using (Stream stream = response.GetResponseStream())
             {
                 byte[] b = new byte[4096];
                 int len;
-                while ((len = resp.Read(b, 0, b.Length)) > 0)
+                while ((len = stream.Read(b, 0, b.Length)) > 0)
                 {
                     buf.Write(b, 0, len);
                 }
             }
-
+            
             string jsonResponse = Encoding.Default.GetString(buf.ToArray());
             KrakenIngestResponse krakenResponse = JsonConvert.DeserializeObject<KrakenIngestResponse>(jsonResponse);
             

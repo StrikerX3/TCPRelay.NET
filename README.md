@@ -13,32 +13,6 @@ Streaming to Twitch.tv through the relay:
 ![Streaming to Twitch.tv through the relay](http://i.imgur.com/lNh3Z.png)
 
 
-## What's new in v0.4 alpha 4
-
-- **General**
-    - **NEW:** partial localization support for:
-        - [es-AR] Spanish (Argentina)  (thanks to Nicolás Sigal)
-        - [nl-NL] Dutch (The Netherlands)  (thanks to TalbotEv)
-    Send me an email if you wish to add your language.
-    NOTE: only the GUI version has support for localization for now.
-  - **NEW**: [a3] socket send buffer size can be tweaked from the console and GUI
-    - Console: use the -sbs:## parameter
-    - GUI: use the newly added Send Buffer field to adjust the buffer size
-    - The default size is 8 KB
-    - Increasing this might help reduce or eliminate dropped frames, especially on connections with high latency to the server
-- GUI
-  - **FIXED**: status tooltip did not clear when TCPRelay was started sucessfully after an error.
-  - **FIXED**: added localization support for several hard-coded strings.
-  - **FIXED**: component layout updated manually for localization. Components should no longer overlap.
-  - **FIXED**: old Twitch.tv ingest server list was shut down. Updated to the new Kraken REST API. Fixes an error when starting TCPRelay.
-  - **NEW**: [a4] added a new Advanced Settings window for tuning socket parameters
-    - Socket Send Buffer Size moved to this window
-    - Added Receive Buffer Size
-    - Added No Delay
-    - Added Connection Timeout
-    - Can set up parameters for both the application- and the remote-facing sockets
-
-
 ## Requirements
 
 Windows
@@ -137,11 +111,11 @@ If something bad happens, run `tcprelay -debug -your-parameters` until you run i
 
 and trying to actually stream results in dropped frames every few seconds and nothing else.
 
-**Solution:** First, make sure the Java Virtual Machine is in the firewall exceptions. If the stream still doesn't work, try replacing "localhost" with your computer name or "127.0.0.1". TCPRelay will try to get your computer name and display it at initialization, in a line like this:
+**Solution:** First, make sure the TCPRelay is in the firewall exceptions. If the stream still doesn't work, try replacing "localhost" with your computer name or "127.0.0.1". The console version TCPRelay will try to get your computer name and display it at initialization, in a line like this:
 
     Server up at <machine-name>:1935
 
-You can also find it in DxDiag or the computer properties (WinKey + Pause).
+You can also find it in DxDiag, in the computer properties (WinKey + Pause) or by typing `hostname` in the Windows Command Prompt.
 
 If you set the target address manually, make sure it is correct. TCPRelay will try to lookup the host name to ensure it is valid but will make no attempt to connect to it until you start a stream.
 
