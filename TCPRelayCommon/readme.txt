@@ -1,4 +1,4 @@
-TCPRelay v0.4 beta 1
+TCPRelay v0.4 beta 2
   by Ivan "StrikerX3" Oliveira
 
 
@@ -18,7 +18,7 @@ Streaming directly to Justin.tv with XSplit: http://i.imgur.com/Qlgv7.png
 Streaming to Justin.tv through the relay: http://i.imgur.com/lNh3Z.png
 
 
-What's new in v0.4 beta 1
+What's new in v0.4 beta 2
 -------------------------
 - General
   - NEW: partial localization support for:
@@ -49,6 +49,7 @@ What's new in v0.4 beta 1
       sockets
   - NEW: [b1] added an option to allow binding to a different IP address in the
     Advanced Settings window
+  - IMPROVED: [b2] cosmetic improvements to the Advanced Settings window
 
 See the history.txt file for earlier versions.
 

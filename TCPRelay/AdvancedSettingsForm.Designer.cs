@@ -46,18 +46,18 @@
             this.chbNoDelayRemote = new System.Windows.Forms.CheckBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.numConnTimeoutRemote = new System.Windows.Forms.NumericUpDown();
-            this.lblConnTimeout = new System.Windows.Forms.Label();
-            this.chbConnTimeoutRemote = new System.Windows.Forms.CheckBox();
+            this.numConnTimeout = new System.Windows.Forms.NumericUpDown();
             this.numInternalBufferSize = new System.Windows.Forms.NumericUpDown();
             this.lblInternalBuffer = new System.Windows.Forms.Label();
             this.lblBindToAddress = new System.Windows.Forms.Label();
             this.cbxAddresses = new System.Windows.Forms.ComboBox();
+            this.chbConnTimeout = new System.Windows.Forms.CheckBox();
+            this.lblConnTimeout = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numSendBufferApp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numReceiveBufferApp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numReceiveBufferRemote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSendBufferRemote)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numConnTimeoutRemote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConnTimeout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numInternalBufferSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,16 +228,16 @@
             // chbNoDelayApp
             // 
             this.chbNoDelayApp.AutoSize = true;
-            this.chbNoDelayApp.Location = new System.Drawing.Point(160, 104);
+            this.chbNoDelayApp.Location = new System.Drawing.Point(160, 77);
             this.chbNoDelayApp.Name = "chbNoDelayApp";
             this.chbNoDelayApp.Size = new System.Drawing.Size(15, 14);
-            this.chbNoDelayApp.TabIndex = 11;
+            this.chbNoDelayApp.TabIndex = 9;
             this.chbNoDelayApp.UseVisualStyleBackColor = true;
             // 
             // lblNoDelay
             // 
             this.lblNoDelay.AutoSize = true;
-            this.lblNoDelay.Location = new System.Drawing.Point(12, 105);
+            this.lblNoDelay.Location = new System.Drawing.Point(12, 78);
             this.lblNoDelay.Name = "lblNoDelay";
             this.lblNoDelay.Size = new System.Drawing.Size(87, 13);
             this.lblNoDelay.TabIndex = 13;
@@ -246,10 +246,10 @@
             // chbNoDelayRemote
             // 
             this.chbNoDelayRemote.AutoSize = true;
-            this.chbNoDelayRemote.Location = new System.Drawing.Point(282, 104);
+            this.chbNoDelayRemote.Location = new System.Drawing.Point(282, 77);
             this.chbNoDelayRemote.Name = "chbNoDelayRemote";
             this.chbNoDelayRemote.Size = new System.Drawing.Size(15, 14);
-            this.chbNoDelayRemote.TabIndex = 12;
+            this.chbNoDelayRemote.TabIndex = 10;
             this.chbNoDelayRemote.UseVisualStyleBackColor = true;
             // 
             // btnOK
@@ -257,7 +257,7 @@
             this.btnOK.Location = new System.Drawing.Point(226, 208);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 16;
+            this.btnOK.TabIndex = 15;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -267,51 +267,32 @@
             this.btnCancel.Location = new System.Drawing.Point(314, 208);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 17;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // numConnTimeoutRemote
+            // numConnTimeout
             // 
-            this.numConnTimeoutRemote.Location = new System.Drawing.Point(303, 75);
-            this.numConnTimeoutRemote.Maximum = new decimal(new int[] {
+            this.numConnTimeout.Location = new System.Drawing.Point(181, 108);
+            this.numConnTimeout.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.numConnTimeoutRemote.Minimum = new decimal(new int[] {
+            this.numConnTimeout.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numConnTimeoutRemote.Name = "numConnTimeoutRemote";
-            this.numConnTimeoutRemote.Size = new System.Drawing.Size(65, 20);
-            this.numConnTimeoutRemote.TabIndex = 10;
-            this.numConnTimeoutRemote.Value = new decimal(new int[] {
+            this.numConnTimeout.Name = "numConnTimeout";
+            this.numConnTimeout.Size = new System.Drawing.Size(65, 20);
+            this.numConnTimeout.TabIndex = 12;
+            this.numConnTimeout.Value = new decimal(new int[] {
             15,
             0,
             0,
             0});
-            // 
-            // lblConnTimeout
-            // 
-            this.lblConnTimeout.AutoSize = true;
-            this.lblConnTimeout.Location = new System.Drawing.Point(12, 78);
-            this.lblConnTimeout.Name = "lblConnTimeout";
-            this.lblConnTimeout.Size = new System.Drawing.Size(131, 13);
-            this.lblConnTimeout.TabIndex = 14;
-            this.lblConnTimeout.Text = "Connection Timeout (sec.)";
-            // 
-            // chbConnTimeoutRemote
-            // 
-            this.chbConnTimeoutRemote.AutoSize = true;
-            this.chbConnTimeoutRemote.Location = new System.Drawing.Point(282, 78);
-            this.chbConnTimeoutRemote.Name = "chbConnTimeoutRemote";
-            this.chbConnTimeoutRemote.Size = new System.Drawing.Size(15, 14);
-            this.chbConnTimeoutRemote.TabIndex = 9;
-            this.chbConnTimeoutRemote.UseVisualStyleBackColor = true;
-            this.chbConnTimeoutRemote.CheckedChanged += new System.EventHandler(this.chbConnTimeoutRemote_CheckedChanged);
             // 
             // numInternalBufferSize
             // 
@@ -357,10 +338,29 @@
             // 
             this.cbxAddresses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxAddresses.FormattingEnabled = true;
-            this.cbxAddresses.Location = new System.Drawing.Point(160, 161);
+            this.cbxAddresses.Location = new System.Drawing.Point(181, 161);
             this.cbxAddresses.Name = "cbxAddresses";
-            this.cbxAddresses.Size = new System.Drawing.Size(229, 21);
+            this.cbxAddresses.Size = new System.Drawing.Size(208, 21);
             this.cbxAddresses.TabIndex = 14;
+            // 
+            // chbConnTimeout
+            // 
+            this.chbConnTimeout.AutoSize = true;
+            this.chbConnTimeout.Location = new System.Drawing.Point(160, 111);
+            this.chbConnTimeout.Name = "chbConnTimeout";
+            this.chbConnTimeout.Size = new System.Drawing.Size(15, 14);
+            this.chbConnTimeout.TabIndex = 11;
+            this.chbConnTimeout.UseVisualStyleBackColor = true;
+            this.chbConnTimeout.CheckedChanged += new System.EventHandler(this.chbConnTimeoutRemote_CheckedChanged);
+            // 
+            // lblConnTimeout
+            // 
+            this.lblConnTimeout.AutoSize = true;
+            this.lblConnTimeout.Location = new System.Drawing.Point(12, 110);
+            this.lblConnTimeout.Name = "lblConnTimeout";
+            this.lblConnTimeout.Size = new System.Drawing.Size(131, 13);
+            this.lblConnTimeout.TabIndex = 14;
+            this.lblConnTimeout.Text = "Connection Timeout (sec.)";
             // 
             // AdvancedSettingsForm
             // 
@@ -371,8 +371,8 @@
             this.Controls.Add(this.cbxAddresses);
             this.Controls.Add(this.numInternalBufferSize);
             this.Controls.Add(this.lblInternalBuffer);
-            this.Controls.Add(this.numConnTimeoutRemote);
-            this.Controls.Add(this.chbConnTimeoutRemote);
+            this.Controls.Add(this.numConnTimeout);
+            this.Controls.Add(this.chbConnTimeout);
             this.Controls.Add(this.lblConnTimeout);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -401,7 +401,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numReceiveBufferApp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numReceiveBufferRemote)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSendBufferRemote)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numConnTimeoutRemote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConnTimeout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numInternalBufferSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -427,12 +427,12 @@
         private System.Windows.Forms.CheckBox chbNoDelayRemote;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.NumericUpDown numConnTimeoutRemote;
-        private System.Windows.Forms.Label lblConnTimeout;
-        private System.Windows.Forms.CheckBox chbConnTimeoutRemote;
+        private System.Windows.Forms.NumericUpDown numConnTimeout;
         private System.Windows.Forms.NumericUpDown numInternalBufferSize;
         private System.Windows.Forms.Label lblInternalBuffer;
         private System.Windows.Forms.Label lblBindToAddress;
         private System.Windows.Forms.ComboBox cbxAddresses;
+        private System.Windows.Forms.CheckBox chbConnTimeout;
+        private System.Windows.Forms.Label lblConnTimeout;
     }
 }

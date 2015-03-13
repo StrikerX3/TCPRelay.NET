@@ -40,7 +40,7 @@ namespace TCPRelayWindow
             chbSendBufferRemote.Checked = RelayParams.SendBufferSizeRemote != null;
             chbReceiveBufferApp.Checked = RelayParams.RecvBufferSizeApp != null;
             chbReceiveBufferRemote.Checked = RelayParams.RecvBufferSizeRemote != null;
-            chbConnTimeoutRemote.Checked = RelayParams.ConnectTimeout != null;
+            chbConnTimeout.Checked = RelayParams.ConnectTimeout != null;
 
             chbNoDelayApp.Checked = RelayParams.NoDelayApp;
             chbNoDelayRemote.Checked = RelayParams.NoDelayRemote;
@@ -49,14 +49,14 @@ namespace TCPRelayWindow
             if (chbSendBufferRemote.Checked) numSendBufferRemote.Value = (decimal)RelayParams.SendBufferSizeRemote;
             if (chbReceiveBufferApp.Checked) numReceiveBufferApp.Value = (decimal)RelayParams.RecvBufferSizeApp;
             if (chbReceiveBufferRemote.Checked) numReceiveBufferRemote.Value = (decimal)RelayParams.RecvBufferSizeRemote;
-            if (chbConnTimeoutRemote.Checked) numConnTimeoutRemote.Value = (decimal)RelayParams.ConnectTimeout;
+            if (chbConnTimeout.Checked) numConnTimeout.Value = (decimal)RelayParams.ConnectTimeout;
 
             // enable the components
             numSendBufferApp.Enabled = chbSendBufferApp.Checked;
             numSendBufferRemote.Enabled = chbSendBufferRemote.Checked;
             numReceiveBufferApp.Enabled = chbReceiveBufferApp.Checked;
             numReceiveBufferRemote.Enabled = chbReceiveBufferRemote.Checked;
-            numConnTimeoutRemote.Enabled = chbConnTimeoutRemote.Checked;
+            numConnTimeout.Enabled = chbConnTimeout.Checked;
 
             // populate network interface list
             NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
@@ -185,13 +185,15 @@ namespace TCPRelayWindow
             chbSendBufferApp.Left = overrideAppLeft;
             chbReceiveBufferApp.Left = overrideAppLeft;
             chbNoDelayApp.Left = overrideAppLeft;
-            cbxAddresses.Left = overrideAppLeft;
+            chbConnTimeout.Left = overrideAppLeft;
 
             // app values
             int valueAppLeft = chbSendBufferApp.Right + margin;
             numSendBufferApp.Left = valueAppLeft;
             numReceiveBufferApp.Left = valueAppLeft;
             numInternalBufferSize.Left = valueAppLeft;
+            numConnTimeout.Left = valueAppLeft;
+            cbxAddresses.Left = valueAppLeft;
             
             // override remote values
             int overrideRemoteLeft = Max(lblFromApp.Right, numSendBufferApp.Right) + margin + spacing;
@@ -200,14 +202,12 @@ namespace TCPRelayWindow
             AdjustWidth(lblToRemote);
             chbSendBufferRemote.Left = overrideRemoteLeft;
             chbReceiveBufferRemote.Left = overrideRemoteLeft;
-            chbConnTimeoutRemote.Left = overrideRemoteLeft;
             chbNoDelayRemote.Left = overrideRemoteLeft;
 
             // remote values
             int valueRemoteLeft = chbSendBufferRemote.Right + margin;
             numSendBufferRemote.Left = valueRemoteLeft;
             numReceiveBufferRemote.Left = valueRemoteLeft;
-            numConnTimeoutRemote.Left = valueRemoteLeft;
 
             // adjust window size
             int windowWidth = Max(lblToRemote.Right, numSendBufferRemote.Right, cbxAddresses.Right) + spacing;
@@ -260,7 +260,7 @@ namespace TCPRelayWindow
 
         private void chbConnTimeoutRemote_CheckedChanged(object sender, EventArgs e)
         {
-            numConnTimeoutRemote.Enabled = chbConnTimeoutRemote.Checked;
+            numConnTimeout.Enabled = chbConnTimeout.Checked;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -273,7 +273,7 @@ namespace TCPRelayWindow
             RelayParams.SendBufferSizeRemote = GetValue((int)numSendBufferRemote.Value, chbSendBufferRemote.Checked);
             RelayParams.RecvBufferSizeApp = GetValue((int)numReceiveBufferApp.Value, chbReceiveBufferApp.Checked);
             RelayParams.RecvBufferSizeRemote = GetValue((int)numReceiveBufferRemote.Value, chbReceiveBufferRemote.Checked);
-            RelayParams.ConnectTimeout = GetValue((int)numConnTimeoutRemote.Value, chbConnTimeoutRemote.Checked);
+            RelayParams.ConnectTimeout = GetValue((int)numConnTimeout.Value, chbConnTimeout.Checked);
 
             RelayParams.InternalBufferSize = (int)numInternalBufferSize.Value;
             RelayParams.BindIP = ((IPAddressItem)cbxAddresses.SelectedItem).Address;
@@ -287,7 +287,7 @@ namespace TCPRelayWindow
             SetOrClearDword("SendBufferRemote", (int)numSendBufferRemote.Value, chbSendBufferRemote.Checked);
             SetOrClearDword("ReceiveBufferApp", (int)numReceiveBufferApp.Value, chbReceiveBufferApp.Checked);
             SetOrClearDword("ReceiveBufferRemote", (int)numReceiveBufferRemote.Value, chbReceiveBufferRemote.Checked);
-            SetOrClearDword("ConnectTimeoutRemote", (int)numConnTimeoutRemote.Value, chbConnTimeoutRemote.Checked);
+            SetOrClearDword("ConnectTimeoutRemote", (int)numConnTimeout.Value, chbConnTimeout.Checked);
 
             RegistryUtils.SetDWord("InternalBufferSize", (int)numInternalBufferSize.Value);
             SetOrClearString("BindIP", RelayParams.BindIP.ToString(), !RelayParams.BindIP.Equals(IPAddress.Any));

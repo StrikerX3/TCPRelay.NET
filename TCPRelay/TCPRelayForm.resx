@@ -146,9 +146,6 @@
   <data name="&gt;&gt;lblTargetURI.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>226, 17</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnStartStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -168,6 +165,9 @@
   <data name="btnStartStop.Text" xml:space="preserve">
     <value>Start</value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>226, 17</value>
+  </metadata>
   <data name="btnStartStop.ToolTip" xml:space="preserve">
     <value>Starts the relay</value>
   </data>
@@ -187,7 +187,7 @@
     <value>True</value>
   </data>
   <data name="lblListenPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 39</value>
+    <value>12, 42</value>
   </data>
   <data name="lblListenPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 13</value>
@@ -211,7 +211,7 @@
     <value>6</value>
   </data>
   <data name="numListenPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 37</value>
+    <value>81, 40</value>
   </data>
   <data name="numListenPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -273,7 +273,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnLoadTTVServers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>445, 10</value>
+    <value>445, 8</value>
   </data>
   <data name="btnLoadTTVServers.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 23</value>
@@ -368,9 +368,6 @@
   <data name="&gt;&gt;lblVersionCopyright.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>226, 17</value>
-  </metadata>
   <data name="tcpRelayConnectionsPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -387,7 +384,7 @@
     <value>tcpRelayConnectionsPanel1</value>
   </data>
   <data name="&gt;&gt;tcpRelayConnectionsPanel1.Type" xml:space="preserve">
-    <value>TCPRelayControls.ConnectionsPanel, TCPRelayControls, Version=0.4.0.3, Culture=neutral, PublicKeyToken=null</value>
+    <value>TCPRelayControls.ConnectionsPanel, TCPRelayControls, Version=0.4.1.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tcpRelayConnectionsPanel1.Parent" xml:space="preserve">
     <value>$this</value>

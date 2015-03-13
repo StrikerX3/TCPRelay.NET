@@ -1,4 +1,4 @@
-# TCPRelay v0.4 alpha 4
+# TCPRelay v0.4 beta 2
 
 ## Introduction
 
@@ -27,17 +27,7 @@ Linux
 You will need Visual Studio 2010 or later. I'm not sure the Express versions will work right out of the box as the project depends on the [Newtonsoft.JSON NuGet package](https://www.nuget.org/packages/Newtonsoft.Json/).
 The project can be loaded and built on [Visual Studio 2013 Community Edition](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx).
 
-Open the solution, update the NuGet packages, select a build target (either x86 or x64) and build it. In order to build the zip files, you need to copy the following files and folders from the release folders (in bold):
-- TCPRelay/bin/Release
-    - **TCPRelay.exe**
-    - **Newtonsoft.Json.dll**
-    - **TCPRelayCommon.dll**
-    - **TCPRelayControls.dll**
-    - **All language folders**
-- TCPRelayCommon
-    - **readme.txt**
-- TCPRelayConsole
-    - **TCPRelayC.exe**
+Open the solution, update the NuGet packages, select a build target (either x86 or x64) and build it. Run the `prepare-build.cmd` script and you should be good to go.
 
 If you wish to improve this build process, feel free to do so and submit a pull request. I would appreciate it very much.
 
