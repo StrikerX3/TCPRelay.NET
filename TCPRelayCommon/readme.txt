@@ -50,6 +50,8 @@ What's new in v0.4 beta 2
   - NEW: [b1] added an option to allow binding to a different IP address in the
     Advanced Settings window
   - IMPROVED: [b2] cosmetic improvements to the Advanced Settings window
+  - FIXED: [b2] Advanced Settings window would fail to open again if closed by
+    clicking the X button
 
 See the history.txt file for earlier versions.
 

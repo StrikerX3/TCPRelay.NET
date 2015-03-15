@@ -25,7 +25,7 @@ namespace TCPRelayWindow
             InitializeComponent();
 
             rm = new ResourceManager("TCPRelayWindow.WinFormStrings", typeof(TCPRelayForm).Assembly);
-            advForm = new AdvancedSettingsForm(relay.Parameters);
+            advForm = new AdvancedSettingsForm(this, relay.Parameters);
 
             AssemblyInfoHelper helper = new AssemblyInfoHelper(typeof(TCPRelayWindow));
             lblVersionCopyright.Text = "TCPRelay v" + helper.AssemblyInformationalVersion;
@@ -276,8 +276,13 @@ namespace TCPRelayWindow
 
         private void btnAdvancedSettings_Click(object sender, EventArgs e)
         {
+            if (advForm.IsDisposed)
+            {
+                advForm = new AdvancedSettingsForm(this, relay.Parameters);
+            }
+
             advForm.LoadSettings();
-            advForm.Show(this);
+            advForm.ShowDialog(this);
         }
 
         private void AddControl(Control container, Control control)

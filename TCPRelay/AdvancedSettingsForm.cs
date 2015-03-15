@@ -19,8 +19,9 @@ namespace TCPRelayWindow
         private TCPRelayParams RelayParams;
         private ResourceManager rm;
 
-        public AdvancedSettingsForm(TCPRelayParams relayParams)
+        public AdvancedSettingsForm(Form owner, TCPRelayParams relayParams)
         {
+            Owner = owner;
             rm = new ResourceManager("TCPRelayWindow.WinFormStrings", typeof(AdvancedSettingsForm).Assembly);
 
             RelayParams = relayParams;
@@ -108,6 +109,8 @@ namespace TCPRelayWindow
                 cbxAddresses.SelectedIndex = 0;
             }
             cbxAddresses.Width = DropDownWidth(cbxAddresses) + 18;
+
+            CenterToParent();
         }
 
         private int DropDownWidth(ComboBox myCombo)
