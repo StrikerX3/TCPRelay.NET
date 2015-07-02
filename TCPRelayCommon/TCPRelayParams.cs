@@ -37,7 +37,7 @@ namespace TCPRelayCommon
             NoDelayRemote = RegistryUtils.GetBoolean("NoDelayRemote", false);
 
             string bindIPAddr = RegistryUtils.GetString("BindIP");
-            if (!IPAddress.TryParse(bindIPAddr, out BindIP))
+            if (bindIPAddr == null || !IPAddress.TryParse(bindIPAddr, out BindIP))
             {
                 BindIP = IPAddress.Any;
             }

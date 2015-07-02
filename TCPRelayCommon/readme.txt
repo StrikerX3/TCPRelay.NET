@@ -1,4 +1,4 @@
-TCPRelay v0.4 beta 2
+TCPRelay v0.4 beta 3
   by Ivan "StrikerX3" Oliveira
 
 
@@ -18,7 +18,7 @@ Streaming directly to Justin.tv with XSplit: http://i.imgur.com/Qlgv7.png
 Streaming to Justin.tv through the relay: http://i.imgur.com/lNh3Z.png
 
 
-What's new in v0.4 beta 2
+What's new in v0.4 beta 3
 -------------------------
 - General
   - NEW: partial localization support for:
@@ -32,6 +32,8 @@ What's new in v0.4 beta 2
     - The default size is 8 KB
     - Increasing this might help reduce or eliminate dropped frames, especially
       on connections with high latency to the server
+  - FIXED: [a4] application no longer crashes on startup if there's no BindIP
+      address in the Registry
 - GUI
   - FIXED: [a1] status tooltip did not clear when TCPRelay was started
     sucessfully after an error.

@@ -241,15 +241,19 @@ namespace TCPRelayWindow
                     cbxTargetURI.Items.Remove(item);
                 }
 
-                (e.Result as List<TwitchTvIngestServerData>).ForEach((server) =>
+                // TODO handle error
+                if (e.Result != null)
                 {
-                    Uri serverUri = new Uri(server.Uri);
-                    if (!currentURIs.Contains(serverUri))
+                    (e.Result as List<TwitchTvIngestServerData>).ForEach((server) =>
                     {
-                        cbxTargetURI.Items.Add(server);
-                        currentURIs.Add(serverUri);
-                    }
-                });
+                        Uri serverUri = new Uri(server.Uri);
+                        if (!currentURIs.Contains(serverUri))
+                        {
+                            cbxTargetURI.Items.Add(server);
+                            currentURIs.Add(serverUri);
+                        }
+                    });
+                }
 
                 cbxTargetURI.SelectionStart = st;
                 cbxTargetURI.SelectionLength = ln;
