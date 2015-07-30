@@ -337,5 +337,6 @@ Contact me by e-mail: ivan.rober@gmail.com
     Official topic: http://www.xsplit.com/forum/viewtopic.php?f=2&t=7159
   or on my blog: http://strikerx3.blogspot.com/
   or on Twitch.tv (shameless plug! :D): http://www.twitch.tv/strikerx3
+  or on YouTube (more shameless plug!): https://www.youtube.com/c/StrikerX3
 
 Have fun streaming! :)
